@@ -337,7 +337,7 @@ ul {
   top: calc(50% - 288px);
   left: calc(50% - 204px);
   width: 408px;
-  height: 576px;
+  height: 584px;
   background: var(--color-bgrnd-modal-window);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -381,6 +381,9 @@ ul {
 
 /* modal form */
 .title-form {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 16px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -389,7 +392,139 @@ ul {
 }
 
 .icon-form {
-  outline: 2px solid teal;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  transition: fill var(--transition-duration) var(--transition-timing-function);
+  pointer-events: none;
+}
+
+.modal-form-lable {
+  display: block;
+  text-align: left;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+  color: var(--cust-border-color);
+}
+
+.modal-form-fild {
+  position: relative;
+}
+
+.modal-form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  transition: border var(--transition-duration)
+    var(--transition-timing-function);
+  padding-left: 38px;
+  padding-right: 38px;
+  margin-bottom: 8px;
+}
+
+.modal-form-input:hover,
+.modal-form-input:focus {
+  border: 1px solid var(--accent-color);
+}
+
+.modal-form-input:focus + .icon-form {
+  fill: var(--accent-color);
+}
+.modal-form-massedge {
+  display: block;
+  width: 100%;
+
+  max-height: 120px;
+  resize: none;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  transition: border var(--transition-duration)
+    var(--transition-timing-function);
+  padding-left: 16px;
+  margin-bottom: 18px;
+}
+
+.modal-form-massedge::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  padding-top: 8px;
+}
+.modal-form-massedge:hover,
+.modal-form-massedge:focus {
+  border: 1px solid var(--accent-color);
+}
+
+.modal-form-agreement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.modal-form-agreement-text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  color: var(--cust-border-color);
+}
+
+.modal-form-agreement-box {
+  appearance: none;
+
+  transition: var(--transition-duration) var(--transition-timing-function);
+  cursor: pointer;
+}
+
+.modal-form-agreement-unchek {
+  opacity: 1;
+  transition: var(--transition-duration) var(--transition-timing-function);
+}
+
+.modal-form-agreement-box:checked
+  + .modal-form-agreement-icon
+  > .modal-form-agreement-unchek {
+  opacity: 0;
+}
+
+.modal-form-agreement-check {
+  opacity: 0;
+  transition: var(--transition-duration) var(--transition-timing-function);
+}
+
+.modal-form-agreement-box:checked
+  + .modal-form-agreement-icon
+  > .modal-form-agreement-check {
+  opacity: 1;
+}
+
+.btn-modal-form {
+  display: block;
+  margin: 0 auto;
+  width: 169px;
+  height: 52px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--primari-whitecolor);
+  background-color: var(--accent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  transition: background-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+
+.btn-modal-form:hover,
+.btn-modal-form:focus {
+  background-color: var(--btn-hover-color);
 }
 
 /**
@@ -658,7 +793,6 @@ ul {
 .flex-footer {
   display: flex;
   align-items: baseline;
-  gap: 120px;
 }
 
 .cont-logo {
@@ -695,6 +829,7 @@ ul {
 
 .cont-socmedia {
   width: 208px;
+  margin-left: 120px;
 }
 
 .footer .set-icon {
@@ -713,6 +848,7 @@ ul {
 .cont-subscribe {
   width: 453px;
   height: 80px;
+  margin-left: 80px;
 }
 .flex-entermail-and-btn {
   display: flex;
@@ -721,7 +857,7 @@ ul {
   justify-content: left;
 }
 
-input[type="email"] {
+.input-footer {
   width: 264px;
   height: 40px;
   background-color: var(--title-text-color);
@@ -746,8 +882,7 @@ input[type="email"] {
   height: 40px;
   margin-left: 24px;
   background: var(--accent-color);
-  border-radius: 4px;
-
+  cursor: pointer;
   transition: background-color var(--transition-duration)
     var(--transition-timing-function);
 }
